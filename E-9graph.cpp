@@ -2,10 +2,9 @@
 using namespace std;
 
 const int MAX = 10;
-int graph[MAX][MAX]; // Adjacency matrix
-bool visited[MAX];   // Visited array for DFS
+int graph[MAX][MAX]; 
+bool visited[MAX];   
 
-// Recursive DFS function
 void DFS(int node, int n) {
     visited[node] = true;
     for (int i = 0; i < n; i++) {
@@ -16,11 +15,10 @@ void DFS(int node, int n) {
 }
 
 int main() {
-    int n; // Number of cities
+    int n; 
     cout << "Enter number of cities: ";
     cin >> n;
 
-    // Initialize graph to 0
     for (int i = 0; i < n; i++)
         for (int j = 0; j < n; j++)
             graph[i][j] = 0;
@@ -35,10 +33,9 @@ int main() {
         cin >> src >> dest >> cost;
 
         graph[src][dest] = cost;
-        graph[dest][src] = cost; // Assuming bidirectional flights
+        graph[dest][src] = cost; 
     }
 
-    // Print adjacency matrix
     cout << "\nAdjacency Matrix:\n";
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
@@ -47,15 +44,12 @@ int main() {
         cout << endl;
     }
 
-    // Initialize visited array to false
     for (int i = 0; i < n; i++) {
         visited[i] = false;
     }
 
-    // Start DFS from node 0
     DFS(0, n);
 
-    // Check if all cities were visited
     bool connected = true;
     for (int i = 0; i < n; i++) {
         if (!visited[i]) {
